@@ -1,0 +1,89 @@
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        {% for c in con  %}
+        <i class="bi bi-envelope-fill"></i><a href="mailto:{{c.mail}}">{{c.mail}}</a>
+        <i class="bi bi-phone-fill phone-icon"></i> {{c.phone}}
+        {% endfor %}
+        
+      </div>
+      <div class="social-links d-none d-md-block">
+        {% for s in sosials  %}
+        <a href="{{s.link}}" class="{{s.title}}"><i class="bi bi-{{s.title}}"></i></a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+   
+      <h1 class="logo me-auto">{% for logo in logos  %}<a href="{{logo.link}}"><img src="{{logo.image.url}}" style="width: 140px;" class="img-fluid"> </a>{% endfor %}</h1>
+      
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% if lang == "en" %}
+          <li><a class="nav-link scrollto active" href="{% url 'Eng' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'enabout' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'enblog' %}">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'enpractice' %}">Pratcices</a></li>
+              {% for sc in services_categories %}
+              <li><a href="{% url 'enservicecategory' sc.key %}">{{sc.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>CGS Group</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'enmembers' %}">Members</a></li>
+              <li><a href="{% url 'enjoinus' %}">Join us</a></li>
+              <li><a href="{% url 'envacancies' %}">Vacancies</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Activities</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% for act in act_categories  %}
+              <li><a href="{% url 'enactcategory' act.key %}">{{act.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'encontact' %}">Contact</a></li>
+      
+          {% endif %}
+          
+          {% if lang == "az" %}
+          <li><a class="nav-link scrollto active" href="{% url 'Aze' %}">Ana səhifə</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'azabout' %}">Haqqında</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'azblog' %}">Bloq</a></li>
+          <li class="dropdown"><a href="#"><span>Xidmətlər</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'azpractice' %}">Təlimlər</a></li>
+              {% for sc in services_categories %}
+              <li><a href="{% url 'azservicecategory' sc.key %}">{{sc.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>CGS QRUP</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'azmembers' %}">Üzvlərimiz</a></li>
+              <li><a href="{% url 'azjoinus' %}">Bizə qoşul</a></li>
+              <li><a href="{% url 'azvacancies' %}">Vakansiyalar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Fəaliyyət</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% for act in act_categories  %}
+              <li><a href="{% url 'azactcategory' act.key %}">{{act.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'azcontact' %}">Əlaqə</a></li>
+       
+          {% endif %}

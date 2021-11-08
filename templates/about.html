@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% include "header.html" %}
+{% if lang == "en" %}
+<li><a class="getstarted scrollto" href="{% url 'azabout' %}">Aze</a></li> 
+{% endif %}
+{% if lang == "az" %}
+<li><a class="getstarted scrollto" href="{% url 'enabout' %}">Eng</a></li> 
+{% endif %}
+{% include "headeralt.html" %}
+{% for about in abouts  %}
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+  <!-- ======= Portfolio Details Section ======= -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-6">
+          <div class="swiper">
+            <div class="swiper-wrapper align-items-center">
+              <div class="animated animatedFadeInUp fadeInUp">
+                <img class="img-fluid" src="{{about.image1.url}}" alt="">
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+<div class="col-lg-6">
+  <div class="portfolio-info">
+    <h3>{{title1}}</h3>
+    <ul>
+      {{about.aboutus|safe}}
+    </ul>
+  </div>
+  
+</div>
+
+  
+<div class="portfolio-description">
+  <h2 class="text-center">{{title2}}</h2>
+  <p>
+    {{about.mission|safe}}
+  </p>
+</div>
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+  
+{% endfor %}
+  
+
+ {% include "footer.html" %}
+  {% endblock body %}

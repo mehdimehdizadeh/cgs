@@ -1,0 +1,50 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+  
+{% include "header.html" %}
+{% if lang == "en" %}
+<li><a class="getstarted scrollto" href="{% url 'azmembers' %}">Aze</a></li> 
+{% endif %}
+{% if lang == "az" %}
+<li><a class="getstarted scrollto" href="{% url 'enmembers' %}">Eng</a></li> 
+{% endif %}
+{% include "headeralt.html" %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+
+    <div  class="" style="height: 100px!important; background-color: #166eb2!important;margin-top: 10px;">
+      <div class="container text-center">
+        
+          <h2 style="color:aliceblue; transform: translate(-0%,80%);z-index: 1;">Team</h2>
+
+      </div>
+    </div>
+    <section id="team" class="team section-bg">
+      <div class="container">
+
+
+        <div class="row">
+          {% for member in members  %}
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{{member.image.url}}" alt="">
+              <h4>{{member.name}}</h4>
+              <span>{{member.position}}</span>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+  {% include "footer.html" %}
+
+  {% endblock body %}

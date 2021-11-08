@@ -1,0 +1,259 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+  
+{% include "header.html" %}
+{% if lang == "en" %}
+<li><a class="getstarted scrollto" href="{% url 'Aze' %}">Aze</a></li> 
+{% endif %}
+{% if lang == "az" %}
+<li><a class="getstarted scrollto" href="{% url 'Eng' %}">Eng</a></li> 
+{% endif %}
+{% include "headeralt.html" %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        {% for s in slider %}
+        <div class="carousel-item {{s.item}}" style="background-image: url({{s.image.url}});">
+          <div class="carousel-container">
+            <div class="container" >
+              
+              {% if lang == "en" %}
+              <h2 class="animate__animated animate__fadeInDown">{{s.title_en}}</h2>
+              <p class="animate__animated animate__fadeInUp">{{s.content_en}}</p>
+              <a href="{{s.link}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              {% endif %}
+                
+              {% if lang == "az" %}
+              <h2 class="animate__animated animate__fadeInDown">{{s.title}}</h2>
+              <p class="animate__animated animate__fadeInUp">{{s.content}}</p>
+              <a href="{{s.link}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ətraflı</a>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services section-bg">
+      <div class="container">
+
+        <div class="row no-gutters">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-person-fill"></i></div>
+              {% if lang == "az" %}
+              <h4 class="title"><a href="{% url 'azmembers' %}">Üzvlərimiz</a></h4>
+              <p class="description">Hazırda {{s}} sayda üzvümüz var!</p> 
+              {% endif %}
+              {% if lang == "en" %}
+              <h4 class="title"><a href="{% url 'enmembers' %}">Members</a></h4>
+              <p class="description">We have {{s}} members in out company!</p> 
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-receipt-cutoff"></i></div>
+              {% if lang == "az" %}
+              <h4 class="title"><a href="{% url 'azvacancies' %}">Vakansiyalar</a></h4>
+              <p class="description">Bizimlə birgə işləməyə tələsin!</p>
+              <p class="description">{{v}} vakansiyamız mövcuddur!</p>
+              {% endif %}
+              {% if lang == "en" %}
+              <h4 class="title"><a href="{% url 'envacancies' %}">Vacancies</a></h4>
+              <p class="description">Join us work together</p>
+              <p class="description">{{v}} vacancies!</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-stack"></i></div>
+              {% if lang == "az" %}
+              <h4 class="title"><a href="{% url 'azpractice' %}">Təlimlərimiz!</a></h4>
+              <p class="description">Hazırda {{p}} müxtəlif istiqamətlərdə layihələrimiz var! </p>
+              {% endif %}
+              {% if lang == "en" %}
+              <h4 class="title"><a href="{% url 'enpractice' %}">Practicies</a></h4>
+              <p class="description">We have {{p}} Practicies on the different field! </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+{% for a in about  %}
+<div class="section-title">
+  <h2>{{a.title}}</h2>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 order-1 order-lg-2">
+    <img src="{{a.image1.url}}" class="img-fluid" style ="animation: fadeIn 5s; "alt="">
+  </div>
+  <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+
+    <p>
+{{a.aboutus|safe}}
+    </p>
+  </div>
+</div>
+{% endfor %}
+
+
+      </div>
+    </section><!-- End About Us Section -->
+   <div  class="" style="height: 100px!important; background-color: #1ea1ff!important;">
+      <div class="container text-center">
+        {% if lang == "az" %}
+        <h2 style="color:aliceblue; transform: translate(-0%,80%);">Xidmətlər</h2>
+        {% endif %}  
+        {% if lang == "en" %}
+        <h2 style="color:aliceblue; transform: translate(-0%,80%);">Services</h2>
+        {% endif %}
+      </div>
+    </div><!-- End Cta Section -->
+    <!-- ======= Why Us Section ======= -->
+
+    <!-- ======= Our Clients Section ======= -->
+ 
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="row">
+{% for i in services_categories %}
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box iconbox-pink box">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"></path>
+                </svg>
+                <i class="bx bx-tachometer"></i>
+              </div>
+              
+              {% if lang == "en" %}
+              <h4><a href="{% url 'enservicecategory' i.key %}">{{i.title}}</a></h4>
+              {% endif %}
+              {% if lang == "az" %}
+              <h4><a href="{% url 'azservicecategory' i.key %}">{{i.title}}</a></h4>
+              {% endif %}
+              
+              
+              {% if lang == "en" %}
+              <p>Click the link for more information!</p>
+              {% endif %}
+              {% if lang == "az" %}
+              <p>Ətraflı məlumat üçün keçidə daxil olun!</p>
+              {% endif %}
+                
+              
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <div  class="" style="height: 100px!important; background-color: #1ea1ff!important;">
+      <div class="container text-center">
+        {% if lang == "az" %}
+        <h2 style="color:aliceblue; transform: translate(-0%,80%);">Təlimlər </h2>
+        {% endif %}
+        {% if lang == "en" %}
+        <h2 style="color:aliceblue; transform: translate(-0%,80%);">Practices</h2>
+        {% endif %}
+          
+
+      </div>
+    </div>
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container">
+
+
+        <div class="row">
+
+{% for member in practices %}
+<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+  <div class="member">
+    <img src="{{member.image.url}}" alt="">
+    <h4>{{member.name}}</h4>
+    <span>{{member.content|safe|truncatewords:30}}</span>
+  </div>
+</div>
+{% endfor %}
+
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+
+  </main><!-- End #main -->
+   <section id="clients" class="clients">
+      <div class="container">
+
+        <div class="section-title">
+          {% if lang == "en" %}
+          <h2>Partniors</h2>
+          <p>Companies cooperating with CGS</p>
+          {% endif %}
+          {% if lang == "az" %}
+          <h2>Partniorlar</h2>
+          <p>CGS ilə əməkdaşlıq edən bütün şirkətlər</p>
+          {% endif %}
+        </div>
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            {% for partnior in partniors  %}
+            <div class="swiper-slide"><img src="{{partnior.image.url}}" class="img-fluid" alt=""></div> 
+            {% endfor %}
+            {% for partnior in partniors  %}
+            <div class="swiper-slide"><img src="{{partnior.image.url}}" class="img-fluid" alt=""></div> 
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Our Clients Section -->
+ {% include "footer.html" %}
+
+  {% endblock body %}

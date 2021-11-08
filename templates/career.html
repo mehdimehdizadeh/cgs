@@ -1,0 +1,76 @@
+
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+  
+{% include "header.html" %}
+{% if lang == "en" %}
+<li><a class="getstarted scrollto" href="{% url 'azvacancies' %}">Aze</a></li> 
+{% endif %}
+{% if lang == "az" %}
+<li><a class="getstarted scrollto" href="{% url 'envacancies' %}">Eng</a></li> 
+{% endif %}
+{% include "headeralt.html" %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="row">
+          {% for post in vacancies %}
+          {% if lang == "az" %}  
+          <div class="col-lg-3">
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href=""></a>{{post.title}}</h5>
+                    <p class="card-text">{{post.about|safe|truncatechars:30}}</p>
+					<p class="card-text"><a href="{% url 'azvacanciesdetail' post.target %}">Ətraflı</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if lang == "en" %}  
+          <div class="col-lg-3">
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-12">
+                </div>
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.about|safe|truncatechars:30}}</p>
+					<p class="card-text"><a href="{% url 'azvacanciesdetail' post.target %}">Read more</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+  {% include "footer.html" %}
+
+  {% endblock body %}

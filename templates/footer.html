@@ -1,0 +1,60 @@
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="social-links">
+            {% for sosial in sosials %}
+            <a href="{{sosial.title}}" class="{{sosial.title}}"><i class="bx bxl-{{sosial.title}}"></i></a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="row">
+            {% if lang == "en" %}
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto active" href="{% url 'Eng' %}">Home</a>
+              <a class="nav-link scrollto" href="{% url 'enabout' %}">About</a>
+            </div>
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto" href="{% url 'enblog' %}">Blog</a>
+              <a href="{% url 'enpractice' %}" class="nav-link scrollto">Pratcices</a>
+            </div>
+            <div class ="col-sm-6">
+              <a href="{% url 'enmembers' %}" class="nav-link scrollto" >Members</a>
+              <a href="{% url 'enjoinus' %}"class="nav-link scrollto">Join us</a>
+            </div>
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto" href="{% url 'encontact' %}">Contact</a>
+              <a class="nav-link scrollto" href="{% url 'envacancies' %}">Vacancies</a>
+            </div>
+            {% endif %}
+            {% if lang == "az" %}
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto active" href="{% url 'Eng' %}">Ana səhifə</a>
+              <a class="nav-link scrollto" href="{% url 'enabout' %}">Haqqında</a>
+            </div>
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto" href="{% url 'enblog' %}">Bloq</a>
+              <a href="{% url 'enpractice' %}" class="nav-link scrollto">Təlimlər</a>
+            </div>
+            <div class ="col-sm-6">
+              <a href="{% url 'enmembers' %}" class="nav-link scrollto" >Üzvlərimiz</a>
+              <a href="{% url 'enjoinus' %}"class="nav-link scrollto">Bizə qoşul</a>
+            </div>
+            <div class ="col-sm-6">
+              <a class="nav-link scrollto" href="{% url 'encontact' %}">Əlaqə</a>
+              <a class="nav-link scrollto" href="{% url 'envacancies' %}">Vakansiyalar</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+    <hr>
+      <div class="copyright" style="color: darkgray;">
+        &copy; Copyright <strong><span>CGS</span></strong>. All Rights Reserved
+        Designed by <a href="https://bootstrapmade.com/">Brief.</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
